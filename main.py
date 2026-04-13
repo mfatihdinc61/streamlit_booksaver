@@ -3,8 +3,8 @@ import requests
 import json
 import os
 
-API_URL = "https://www.googleapis.com/books/v1/volumes"
-API_KEY = "AIzaSyDo6Brcnd5HhmEluXO9qxOj-rkgtMTYSSo"
+API_KEY = st.secrets["API_KEY"]
+API_URL = st.secrets["API_URL"]
 SAVE_FILE = "saved_books.json"
 
 
