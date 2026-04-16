@@ -207,29 +207,58 @@ def save_book(book):
 # -------------------------
 # Search books with error handling
 # -------------------------
+# def search_books(query):
+#     """Search Google Books API with error handling"""
+#     if not query:
+#         return []
+    
+#     params = {
+#         "q": query,
+#         "maxResults": 10,
+#         "key": API_KEY
+#     }
+    
+#     try:
+#         response = requests.get(API_URL, params=params, timeout=10)
+#         response.raise_for_status()  # Raise exception for bad status codes
+        
+#         data = response.json()
+#         return data.get("items", [])
+        
+#     except requests.exceptions.RequestException as e:
+#         st.error(f"❌ API Error: {str(e)}")
+#         return []
+#     except json.JSONDecodeError:
+#         st.error("❌ Invalid response from API")
+#         return []
+
+
 def search_books(query):
-    """Search Google Books API with error handling"""
     if not query:
         return []
     
     params = {
         "q": query,
         "maxResults": 10,
-        "key": API_KEY
+        "key": API_KEY,
+        "country": "US"
+    }
+    
+    # Add headers with your app URL as the referer
+    headers = {
+        "Referer": "https://appbooksaver-e5zfx9b9hosnus4mxp2m8e.streamlit.app/"
     }
     
     try:
-        response = requests.get(API_URL, params=params, timeout=10)
-        response.raise_for_status()  # Raise exception for bad status codes
+        # Include headers in the request
+        response = requests.get(API_URL, params=params, headers=headers, timeout=10)
+        response.raise_for_status()
         
         data = response.json()
         return data.get("items", [])
         
     except requests.exceptions.RequestException as e:
         st.error(f"❌ API Error: {str(e)}")
-        return []
-    except json.JSONDecodeError:
-        st.error("❌ Invalid response from API")
         return []
 
 # -------------------------
