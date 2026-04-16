@@ -355,7 +355,7 @@ elif menu == "Saved Books":
 # -------------------------
 st.sidebar.markdown("---")
 st.sidebar.info(
-    "**About:**\n"
+    "**About**\n"
     "- Search books using Google Books API\n"
     "- Save your favorites\n"
     "- ⚠️ Books are saved locally and will reset when the app restarts"
