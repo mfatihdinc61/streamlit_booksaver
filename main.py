@@ -3,8 +3,8 @@ import requests
 import json
 import os
 
-API_KEY = st.secrets["API_KEY"]
-API_URL = st.secrets["API_URL"]
+API_KEY = st.secrets["api_key"]
+API_URL = st.secrets["api_url"]
 SAVE_FILE = "saved_books.json"
 
 
